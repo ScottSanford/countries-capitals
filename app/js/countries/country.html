@@ -1,0 +1,26 @@
+<table class="table table-striped table-hover table-bordered">
+	<thead>
+	<tr>
+		<th>Name</th>
+		<th>Country Code</th>
+		<th>Area</th>
+		<th>Capital</th>
+		<th>Population</th>
+		<th>Continent</th>
+		<th>Timezone</th>
+		<th># and Names of Neighbors</th>
+	<tr>
+	</thead>
+	<tbody>
+	<tr ng-repeat="country in countryList" ng-click="goToCountry(country.countryCode)">
+       <td><a ng-href="#!/countries/{{ country.countryCode | uppercase }}">{{country.countryName}}</a></td>
+       <td>{{country.countryCode}}</td>
+       <td>{{country.area}}</td>
+       <td>{{country.capital}}</td>
+       <td>{{country.population}}</td>
+       <td>{{country.continent}}</td>
+       <td>{{country.timezone | number}}</td>
+       <td>{{country.neighbors| number:0}}</td>
+      </tr>
+    </tbody>
+</table>
