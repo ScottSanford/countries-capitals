@@ -1,8 +1,29 @@
+/*html {
+	background-image: url('../chicago-bean.jpg');
+	background-size: 1024px 768px;
+	background-repeat: no-repeat;
+}*/
+
 .container {
 	width:1024px;
 }
 
 main {
-	margin-top: 100px;
+	margin-top: 50px;
 }
+
+/*Country Table*/
+.scrollTable {
+	height:400px;
+	width:100%;
+	overflow-y:scroll;
+}
+
+th {
+	text-align: center;
+}
+
+
+tr:nth-child(even) {background: #b8d1f3}
+tr:nth-child(odd) {background: #dae5f4}
 

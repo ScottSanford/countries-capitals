@@ -1,17 +1,29 @@
 angular.module('cc')
 	
 	.config(function($routeProvider){
-		$routeProvider.when('/countries', {
+		$routeProvider.when('/countries/:countryCode', {
 			templateUrl: './js/countries/country.html', 
-			controller: 'CountryCtrl'
+			controller: 'CountryCtrl', 
+			resolve:{
+					    countryRouteService: function(countryRouteService){
+					   		return countryRouteService();
+                        },
+                        countryNeighbors: function(countryNeighborsService){
+                        	return countryNeighborsService();
+                        }, 
+                        countryCapital: function(countryCapitalService){
+                        	return countryCapitalService();
+                        }
+                    }
 		})
 	})
 
-	.controller("CountryCtrl", [$scope, countryRepo, function($scope, countryRepo){
+	.controller("CountryCtrl", ['$scope', 'countryNeighbors', 'countryCapital', 'countryRouteService',
+		function($scope, countryNeighbors, countryCapital, countryRouteService){
+
 		
-		countryRepository.getCountryList()
-                .then(function(result) {
-                    $scope.countries = result.geonames;
-                });
-		
+			$scope.country = countryRouteService.geonames[0];
+			$scope.capitalPopulation = countryCapital.geonames[0].population;
+			$scope.neighbours = countryNeighbors.geonames;
+
 	}])
