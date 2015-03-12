@@ -1,13 +1,15 @@
 angular.module('cc')
-	.factory('countryRepo', [
+	.factory('countryDataService', [
         '$http', function($http) {
 
         	var url = "http://api.geonames.org/countryInfoJSON";
         	var params = {
+                country: null,
+                lang: null,
         		username: 'sanfosr'
         	}
 
-        	return function getCountryList() {
+        	return function getCountryData() {
                 var request = $http.get(url, { 
                 	cache: true, 
                 	params: params
